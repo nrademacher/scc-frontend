@@ -7,26 +7,27 @@ const helloQuery = gql`
     }
 `
 
-export default function Home({ data }: any) {
-// const { data, loading, error } = useQuery(helloQuery)
+const Home = () => {
+    const { data, loading, error } = useQuery(helloQuery)
 
-  // if (loading) return <p>Loading...</p>
-  // if (error) return <p>Oh no... {error.message}</p>
-
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>Oh no... {error.message}</p>
 
     return <h1 className="grid place-items-center min-h-screen text-7xl">{data.hello}</h1>
 }
 
-export async function getStaticProps() {
-  const apolloClient = initializeApollo();
+export default Home
 
-  const { data } = await apolloClient.query({
-    query: helloQuery,
-  });
+// export async function getStaticProps() {
+//   const apolloClient = initializeApollo();
 
-  return addApolloState(apolloClient, {
-    props: {
-      data: JSON.parse(JSON.stringify(data)),
-    },
-  });
-}
+//   const { data } = await apolloClient.query({
+//     query: helloQuery,
+//   });
+
+//   return addApolloState(apolloClient, {
+//     props: {
+//       data: JSON.parse(JSON.stringify(data)),
+//     },
+//   });
+// }
