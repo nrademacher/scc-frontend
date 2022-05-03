@@ -1,16 +1,11 @@
 import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, NormalizedCacheObject, split } from '@apollo/client'
+import type { IncomingHttpHeaders } from 'http'
 import { WebSocketLink } from '@apollo/client/link/ws'
-import { getMainDefinition } from '@apollo/client/utilities'
-
-import { IncomingHttpHeaders } from 'http'
-
 import Cookies from 'js-cookie'
-
+import { getMainDefinition } from '@apollo/client/utilities'
 import merge from 'deepmerge'
 import isEqual from 'lodash.isequal'
-
 import type { AppProps } from 'next/app'
-
 import { useMemo } from 'react'
 
 const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__'
