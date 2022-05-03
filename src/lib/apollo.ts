@@ -7,7 +7,7 @@ import { IncomingHttpHeaders } from 'http'
 import Cookies from 'js-cookie'
 
 import merge from 'deepmerge'
-import isEqual from 'lodash/isEqual'
+import isEqual from 'lodash.isequal'
 
 import type { AppProps } from 'next/app'
 
