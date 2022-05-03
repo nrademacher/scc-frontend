@@ -19,7 +19,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
 
 function createApolloClient(headers: IncomingHttpHeaders | null = null) {
     const authLink = new ApolloLink((operation, forward) => {
-        const token = Cookies.get('pulse-user-token')
+        const token = Cookies.get('scc-user-token')
         const authorization = token ? `Bearer ${token}` : ''
 
         operation.setContext(({ headers }: Request) => ({
@@ -45,15 +45,16 @@ function createApolloClient(headers: IncomingHttpHeaders | null = null) {
         uri: `http://${host}/graphql`,
     })
 
-    const wsLink = process.browser
-        ? new WebSocketLink({
-              // if you instantiate in the server, the error will be thrown
-              uri: `ws://${host}/graphql`,
-              options: {
-                  reconnect: true,
-              },
-          })
-        : null
+    const wsLink =
+        typeof window !== 'undefined'
+            ? new WebSocketLink({
+                  // if you instantiate in the server, the error will be thrown
+                  uri: `ws://${host}/graphql`,
+                  options: {
+                      reconnect: true,
+                  },
+              })
+            : null
 
     interface Definintion {
         kind: string

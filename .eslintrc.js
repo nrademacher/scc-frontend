@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['next/core-web-vitals', 'plugin:cypress/recommended', 'plugin:prettier/recommended'],
+  extends: ['next/core-web-vitals', 'plugin:prettier/recommended'],
 }

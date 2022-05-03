@@ -1,10 +1,9 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-
 import { ApolloProvider } from '@apollo/client'
+import { useApollo } from '@/lib/apollo'
 
 import '../styles/globals.css'
-import { useApollo } from '@/lib/apollo'
 
 function App({ Component, pageProps }: AppProps) {
     const apolloClient = useApollo(pageProps)
@@ -13,10 +12,10 @@ function App({ Component, pageProps }: AppProps) {
         <>
             <Head>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                <title>Next Starter Lite</title>
+                <title>SCC</title>
             </Head>
             <ApolloProvider client={apolloClient}>
-                <div className="subpixel-antialiased">
+                <div>
                     <Component {...pageProps} />
                 </div>
             </ApolloProvider>
