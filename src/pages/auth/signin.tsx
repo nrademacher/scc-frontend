@@ -15,7 +15,7 @@ const SIGNUP_USER = gql`
     }
 `
 
-export const LOGIN_USER = gql`
+const LOGIN_USER = gql`
     query Query($email: String!, $password: String!) {
         login(email: $email, password: $password)
     }
